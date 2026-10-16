@@ -5,6 +5,7 @@ class HomePage {
     signupLoginLink: () => cy.get('#header a[href="/login"]'),
     loggedInUser: (username) => cy.contains("#header a", `Logged in as ${username}`),
     deleteAccountLink: () => cy.contains("#header a", "Delete Account"),
+    logoutLink: () => cy.contains('li', 'logout', { matchCase: false }),
   };
 
   verifyHomePage() {
@@ -20,6 +21,12 @@ class HomePage {
 
   verifyLoggedInUser(username) {
     this.elements.loggedInUser(username).should("be.visible");
+  }
+
+  logout() {
+    this.elements.logoutLink()
+      .should("be.visible")
+      .click();
   }
 
   deleteAccount() {
