@@ -5,6 +5,7 @@ class SignupPage {
     nameInput: () => cy.get('[data-qa="signup-name"]'),
     emailInput: () => cy.get('[data-qa="signup-email"]'),
     signupButton: () => cy.get('[data-qa="signup-button"]'),
+    duplicateEmailError: () => cy.contains("Email Address already exist!"),
   };
 
   verifyHeading() {
@@ -29,6 +30,11 @@ class SignupPage {
       .should("be.enabled")
       .click();
   }
+
+  verifyDuplicateEmailError() {
+  this.elements.duplicateEmailError()
+    .should("be.visible");
+}
 }
 
 export default SignupPage;
