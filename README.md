@@ -97,7 +97,7 @@ Install the following before running the tests:
 Clone the repository:
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/masteryourmind/automationexercise.git
 ```
 
 Navigate to the project directory:
