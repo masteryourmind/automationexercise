@@ -131,7 +131,7 @@ npx cypress run
 For example, to run the shopping cart test:
 
 ```bash
-npx cypress run --spec "cypress/e2e/add-products-to-cart.cy.js"
+npx cypress run --spec "cypress/e2e/addProductsToCart.cy.js"
 ```
 
 To run the registration test:
