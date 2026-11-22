@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run --browser chrome",
-    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
-    "report:html": "marge cypress/reports/merged.json -f report -o cypress/reports/html"
+    "report:merge": "mochawesome-merge \"cypress/reports/*.json\" -o cypress/merged/merged.json",
+    "report:html": "marge cypress/merged/merged.json -f report -o cypress/reports/html"
   },
   "repository": {
     "type": "git",
