@@ -19,6 +19,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           build: npm ci
+          command: npm run cy:run
 
       - name: Merge and generate report
         if: always()
@@ -26,9 +27,34 @@ jobs:
           npm run report:merge
           npm run report:html
 
-      - name: Upload report
+      - name: Debug report files
+        if: always()
+        run: |
+          ls -la cypress/reports cypress/merged || true
+          ls -la cypress/screenshots || true
+          head -c 800 cypress/merged/merged.json || true
+
+      - name: Upload HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-report
+          name: cypress-html-report
           path: cypress/reports/html
+
+      - name: Upload JSON results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-json-results
+          path: |
+            cypress/reports/*.json
+            cypress/merged/merged.json
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+
